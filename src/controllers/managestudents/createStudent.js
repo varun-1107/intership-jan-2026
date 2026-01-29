@@ -37,17 +37,11 @@ export default router.post("/",async(req,res)=>{
 
 let isRollnoExist = await studentModel.findOne({rollno:rollno})
         if(isRollnoExist){
-            return res.send({
-                code:202,
-                message:"roll number alredy exist"
-            })
+             return send(res,setErrmsg("rollno",RESPONSE.ALREDY_EXISTS))
         }
         let isEmailValid = String(email).match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
         if(isEmailValid==null){
-            return res.send({
-                code:203,
-                message:"invalid email format"
-            })
+              return send(res,setErrmsg("rollno",RESPONSE.INVALID))
         }
 let isEmailExist = await studentModel.findOne({email:email})
         if(isEmailExist){
