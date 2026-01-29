@@ -1,5 +1,7 @@
 import {Router} from "express"
 import studentModel from "../../models/studentModel.js";
+import { RESPONSE } from "../../config/golbal.js";
+import {send, setErrmsg } from "../../helper/responseHelper.js"
 const router =Router()
 
 export default router.post("/",async(req,res)=>{
@@ -10,22 +12,25 @@ export default router.post("/",async(req,res)=>{
     //   console.log("email",email)
 
       if (!name || name == undefined){
-        return res.send({
-            code:201,
-            message:"name is mendatory"
-        })
+        // return res.send({
+        //     code:201,
+        //     message:"name is mendatory"
+        // })
+        return send(res,setErrmsg("Name",RESPONSE.REQUIRED))
       }
       if (!email || email == undefined){
-        return res.send({
-            code:201,
-            message:"email is mendatory"
-        })
+        // return res.send({
+        //     code:201,
+        //     message:"email is mendatory"
+        // })
+        return send(res,setErrmsg("email",RESPONSE.REQUIRED))
       }
       if (!rollno || rollno == undefined){
-        return res.send({
-            code:201,
-            message:"rollno is mendatory"
-        })
+        // return res.send({
+        //     code:201,
+        //     message:"rollno is mendatory"
+        // })
+        return send(res,setErrmsg("rollno",RESPONSE.REQUIRED))
       }
 
       
