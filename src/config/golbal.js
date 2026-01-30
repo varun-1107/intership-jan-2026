@@ -18,5 +18,9 @@ export const RESPONSE={
     UNKOWN_ERR:{
         code:500,
         message:"something went wrong"
+    },
+    NOT_FOUND:{
+        code:205,
+        message:"NOT FOUND"
     }
 }

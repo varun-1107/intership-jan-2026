@@ -41,14 +41,11 @@ let isRollnoExist = await studentModel.findOne({rollno:rollno})
         }
         let isEmailValid = String(email).match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
         if(isEmailValid==null){
-              return send(res,setErrmsg("rollno",RESPONSE.INVALID))
+              return send(res,setErrmsg("email",RESPONSE.INVALID))
         }
 let isEmailExist = await studentModel.findOne({email:email})
         if(isEmailExist){
-            return res.send({
-                code:202,
-                message:"email alredy exist"
-            })
+              return send(res,setErrmsg("email",RESPONSE.ALREDY_EXISTS))
         }
 
 
