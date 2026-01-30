@@ -8,7 +8,9 @@ const router = Router();
 export default router.get("/", async (req, res) => {
   try {
    
-
+let page = req.query.page?Number(req.query.page):1;
+let limit = req.query.limit?Number(req.query.limit):1;
+let skip =(page-1)*limit;
 
 
     let student = await studentModel.find({
